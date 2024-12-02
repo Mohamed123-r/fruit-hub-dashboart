@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub_dashboart/core/widgets/custom_text_field.dart';
+import 'package:fruit_hub_dashboart/feature/add_product/presentation/views/widgets/Image_file.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -50,6 +51,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               SizedBox(
                 height: 16,
               ),
+              ImageFile(),
             ]),
           )),
     );
