@@ -7,7 +7,9 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 
 class ImageFile extends StatefulWidget {
-  const ImageFile({super.key});
+  const ImageFile({super.key, required this.onFileChanged});
+
+  final void Function(File? file) onFileChanged;
 
   @override
   State<ImageFile> createState() => _ImageFileState();
@@ -26,6 +28,7 @@ class _ImageFileState extends State<ImageFile> {
             await picker.pickImage(source: ImageSource.gallery);
         setState(() {
           imageFile = File(image!.path);
+          widget.onFileChanged(imageFile);
           isLoading = true;
         });
       },
@@ -64,6 +67,7 @@ class _ImageFileState extends State<ImageFile> {
                     onPressed: () {
                       setState(() {
                         imageFile = null;
+                        widget.onFileChanged(imageFile);
                         isLoading = false;
                       });
                     },
