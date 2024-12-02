@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hub_dashboart/core/widgets/custom_text_field.dart';
 import 'package:fruit_hub_dashboart/feature/add_product/presentation/views/widgets/image_file.dart';
 
+import 'feature_box.dart';
+
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
 
@@ -19,7 +21,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
       child: Form(
           key: _formKey,
           autovalidateMode: _autovalidateMode,
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.all(16.0),
             child: Column(children: [
               CustomTextField(
@@ -47,6 +49,12 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 maxLines: 5,
                 hintText: "Product Description",
                 keyboardType: TextInputType.text,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              FeatureBoxWidget(
+                onSelected: (value) {},
               ),
               SizedBox(
                 height: 16,
