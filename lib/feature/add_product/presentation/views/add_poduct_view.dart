@@ -7,12 +7,17 @@ class AddProductView extends StatelessWidget {
   const AddProductView({super.key});
 
   static const routeName = '/add-product';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Add Product"
-        ,style: TextStyles.heading5Bold,),
+        backgroundColor: Colors.white,
+        title: const Text(
+          "Add Product",
+          style: TextStyles.heading5Bold,
+        ),
         centerTitle: true,
       ),
       body: const AddProductViewBody(),
