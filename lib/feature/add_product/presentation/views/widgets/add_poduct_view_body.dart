@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fruit_hub_dashboart/core/widgets/custom_button.dart';
 import 'package:fruit_hub_dashboart/core/widgets/custom_text_field.dart';
+import 'package:fruit_hub_dashboart/feature/add_product/domain/entities/add_product_input_entity.dart';
 import 'package:fruit_hub_dashboart/feature/add_product/presentation/views/widgets/image_file.dart';
 
 import 'feature_box.dart';
@@ -20,7 +21,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   late String name, code, description;
   late num price;
   File? image;
-   bool? isFeatured;
+  bool? isFeatured;
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +88,14 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       _autovalidateMode = AutovalidateMode.disabled;
+                      AddProductInputEntity entity = AddProductInputEntity(
+                        name: name,
+                        code: code,
+                        description: description,
+                        price: price,
+                        image: image!,
+                        isFeatured: isFeatured ?? false,
+                      );
                     } else {
                       _autovalidateMode = AutovalidateMode.always;
                     }
