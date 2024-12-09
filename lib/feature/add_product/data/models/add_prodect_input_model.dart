@@ -28,6 +28,7 @@ class AddProductInputModel {
       code: entity.code,
       urlImage: entity.urlImage);
 
+  toJson() => toMap();
   toMap() => {
     "name": name,
     "description": description,
