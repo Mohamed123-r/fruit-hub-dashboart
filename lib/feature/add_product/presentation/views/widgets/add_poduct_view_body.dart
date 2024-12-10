@@ -6,6 +6,7 @@ import 'package:fruit_hub_dashboart/core/widgets/custom_button.dart';
 import 'package:fruit_hub_dashboart/core/widgets/custom_text_field.dart';
 import 'package:fruit_hub_dashboart/feature/add_product/domain/entities/add_product_input_entity.dart';
 import 'package:fruit_hub_dashboart/feature/add_product/presentation/views/widgets/image_file.dart';
+import 'package:fruit_hub_dashboart/feature/add_product/presentation/views/widgets/is_organic.dart';
 
 import '../../manage/add_product_cubit/add_product_cubit.dart';
 import 'feature_box.dart';
@@ -24,6 +25,10 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   late num price;
   File? image;
   bool? isFeatured;
+  bool? isOrganic;
+  late int expirationMonths;
+  late int numberOfCalories;
+  late int unitAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +39,14 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(children: [
+              CustomTextField(
+                onSaved: (value) => code = value!.toLowerCase(),
+                hintText: "Product Code",
+                keyboardType: TextInputType.text,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
               CustomTextField(
                 onSaved: (value) => name = value!.toLowerCase(),
                 hintText: "Product Name",
@@ -51,9 +64,25 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 height: 16,
               ),
               CustomTextField(
-                onSaved: (value) => code = value!.toLowerCase(),
-                hintText: "Product Code",
-                keyboardType: TextInputType.text,
+                onSaved: (value) => expirationMonths = int.parse(value!),
+                hintText: "Product Price",
+                keyboardType: TextInputType.number,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomTextField(
+                onSaved: (value) => numberOfCalories = int.parse(value!),
+                hintText: "Product Price",
+                keyboardType: TextInputType.number,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomTextField(
+                onSaved: (value) => unitAmount = int.parse(value!),
+                hintText: "Product Price",
+                keyboardType: TextInputType.number,
               ),
               const SizedBox(
                 height: 16,
@@ -64,6 +93,14 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 hintText: "Product Description",
                 keyboardType: TextInputType.text,
               ),
+              const SizedBox(
+                height: 16,
+              ),
+              IsOrganicBoxWidget(onSelected: (value) {
+                setState(() {
+                  isOrganic = value;
+                });
+              }),
               const SizedBox(
                 height: 16,
               ),
@@ -97,6 +134,10 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         price: price,
                         image: image!,
                         isFeatured: isFeatured ?? false,
+                        expirationMonths: expirationMonths,
+                        unitAmount: unitAmount,
+                        numberOfCalories: numberOfCalories,
+                        isOrganic: isOrganic ?? false,
                       );
                       context.read<AddProductCubit>().addProduct(entity);
                     } else {
