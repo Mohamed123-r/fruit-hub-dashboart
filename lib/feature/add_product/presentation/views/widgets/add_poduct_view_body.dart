@@ -138,6 +138,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         unitAmount: unitAmount,
                         numberOfCalories: numberOfCalories,
                         isOrganic: isOrganic ?? false,
+                        reviews: [],
                       );
                       context.read<AddProductCubit>().addProduct(entity);
                     } else {
