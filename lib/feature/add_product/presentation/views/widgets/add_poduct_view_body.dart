@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub_dashboart/core/widgets/custom_button.dart';
 import 'package:fruit_hub_dashboart/core/widgets/custom_text_field.dart';
 import 'package:fruit_hub_dashboart/feature/add_product/domain/entities/add_product_input_entity.dart';
 import 'package:fruit_hub_dashboart/feature/add_product/presentation/views/widgets/image_file.dart';
 
+import '../../manage/add_product_cubit/add_product_cubit.dart';
 import 'feature_box.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -96,6 +98,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         image: image!,
                         isFeatured: isFeatured ?? false,
                       );
+                      context.read<AddProductCubit>().addProduct(entity);
                     } else {
                       _autovalidateMode = AutovalidateMode.always;
                     }
