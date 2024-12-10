@@ -10,31 +10,59 @@ class AddProductInputModel {
   final bool isFeatured;
   final String code;
   String? urlImage;
+  final int expirationMonths;
+  final bool isOrganic;
+  final int numberOfCalories;
+  final int unitAmount;
+  final num aveRating;
+  final num ratingCount;
 
-  AddProductInputModel(
-      {required this.name,required this.isFeatured,
-        required this.description,
-        required this.price,
-        required this.image,
-        required this.code,
-        this.urlImage});
+  AddProductInputModel({
+    required this.name,
+    required this.isFeatured,
+    required this.description,
+    required this.price,
+    required this.image,
+    required this.code,
+    this.urlImage,
+    required this.expirationMonths,
+    required this.numberOfCalories,
+    required this.unitAmount,
+    this.aveRating = 0,
+    this.ratingCount = 0,
+    this.isOrganic = false,
+  });
 
-  factory AddProductInputModel.fromEntity(AddProductInputEntity entity) => AddProductInputModel(
-      name: entity.name,
-      isFeatured: entity.isFeatured,
-      description: entity.description,
-      price: entity.price,
-      image: entity.image,
-      code: entity.code,
-      urlImage: entity.urlImage);
+  factory AddProductInputModel.fromEntity(AddProductInputEntity entity) =>
+      AddProductInputModel(
+          name: entity.name,
+          isFeatured: entity.isFeatured,
+          description: entity.description,
+          price: entity.price,
+          image: entity.image,
+          code: entity.code,
+          urlImage: entity.urlImage,
+          expirationMonths: entity.expirationMonths,
+          numberOfCalories: entity.numberOfCalories,
+          unitAmount: entity.unitAmount,
+          aveRating: entity.aveRating,
+          ratingCount: entity.ratingCount,
+          isOrganic: entity.isOrganic);
 
   toJson() => toMap();
+
   toMap() => {
-    "name": name,
-    "description": description,
-    "price": price,
-    "image": urlImage,
-    "isFeatured": isFeatured,
-    "code": code,
-  };
+        "name": name,
+        "description": description,
+        "price": price,
+        "image": urlImage,
+        "isFeatured": isFeatured,
+        "code": code,
+        "expirationMonths": expirationMonths,
+        "numberOfCalories": numberOfCalories,
+        "unitAmount": unitAmount,
+        "aveRating": aveRating,
+        "ratingCount": ratingCount,
+        "isOrganic": isOrganic
+      };
 }
