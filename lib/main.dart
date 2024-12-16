@@ -2,16 +2,20 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub_dashboart/feature/dashboart/presentation/views/dashboard_view.dart';
-
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/helper_function/on_generate_route.dart';
 import 'core/service/bloc_opesever.dart';
 import 'core/service/get_it.dart';
+import 'core/utils/keys.dart';
 import 'firebase_options.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-
+  await Supabase.initialize(
+    url: kSupebaseUrl,
+    anonKey: kSupebaseAnonKey,
+  );
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
