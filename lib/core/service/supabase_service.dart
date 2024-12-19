@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:fruit_hub_dashboart/core/service/storage_service.dart';
@@ -11,7 +10,19 @@ class SupabaseService implements StorageService {
   static late Supabase _supabase;
 
   static createBucketSupabase({required String bucketName}) async {
-    await _supabase.client.storage.createBucket(bucketName);
+    var buckets = await _supabase.client.storage.listBuckets();
+    bool isBuketCreate = false;
+
+    for (var bucket in buckets) {
+      if (bucket == bucketName) {
+        isBuketCreate = true;
+        break;
+      }
+    }
+
+    if (!isBuketCreate) {
+      await _supabase.client.storage.createBucket(bucketName);
+    }
   }
 
   static initializeSupabase() async {
