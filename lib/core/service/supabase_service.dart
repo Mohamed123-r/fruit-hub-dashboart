@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fruit_hub_dashboart/core/service/bloc_opesever.dart';
 import 'package:fruit_hub_dashboart/core/service/storage_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -39,6 +40,12 @@ class SupabaseService implements StorageService {
     var result = await _supabase.client.storage
         .from('fruits_images')
         .upload("$pass/$fileName.$fileExtension", file);
+
+    final String publicUrl = _supabase.client
+        .storage
+        .from('fruits_images')
+        .getPublicUrl("$pass/$fileName.$fileExtension");
+    logger.i(publicUrl);
     return result;
   }
 }

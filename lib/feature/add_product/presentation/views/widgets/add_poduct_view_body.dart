@@ -65,7 +65,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
               CustomTextField(
                 onSaved: (value) => expirationMonths = int.parse(value!),
-                hintText: "Product Price",
+                hintText: "Expiration Months",
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(
@@ -73,7 +73,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
               CustomTextField(
                 onSaved: (value) => numberOfCalories = int.parse(value!),
-                hintText: "Product Price",
+                hintText: "Number of Calories",
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(
@@ -81,7 +81,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
               CustomTextField(
                 onSaved: (value) => unitAmount = int.parse(value!),
-                hintText: "Product Price",
+                hintText: "Unit Amount",
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(
