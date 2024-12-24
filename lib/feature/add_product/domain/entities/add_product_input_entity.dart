@@ -16,10 +16,11 @@ class AddProductInputEntity {
   final int unitAmount;
   final num aveRating;
   final num ratingCount;
+  final num bestSeller;
   final List<ReviewEntity> reviews ;
 
 
-  AddProductInputEntity({
+  AddProductInputEntity( { this.bestSeller=0,
     required this.name,
     required this.isFeatured,
     required this.description,

@@ -18,9 +18,10 @@ class AddProductInputModel {
   final int unitAmount;
   final num aveRating;
   final num ratingCount;
+   final num bestSeller;
   final List<ReviewModel> reviews;
 
-  AddProductInputModel({
+  AddProductInputModel( {required this.bestSeller,
     required this.name,
     required this.isFeatured,
     required this.description,
@@ -52,8 +53,10 @@ class AddProductInputModel {
           aveRating: entity.aveRating,
           ratingCount: entity.ratingCount,
           isOrganic: entity.isOrganic,
+         
           reviews:
-              entity.reviews.map((e) => ReviewModel.fromEntity(e)).toList());
+              entity.reviews.map((e) => ReviewModel.fromEntity(e)).toList(), bestSeller:
+              entity.bestSeller, );
 
   toJson() => toMap();
 
@@ -63,6 +66,7 @@ class AddProductInputModel {
         "price": price,
         "image": urlImage,
         "isFeatured": isFeatured,
+        "bestSeller":bestSeller,
         "code": code,
         "expirationMonths": expirationMonths,
         "numberOfCalories": numberOfCalories,

@@ -46,6 +46,6 @@ class SupabaseService implements StorageService {
         .from('fruits_images')
         .getPublicUrl("$pass/$fileName.$fileExtension");
     logger.i(publicUrl);
-    return result;
+    return publicUrl;
   }
 }
